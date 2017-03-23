@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>OpenLayers Boxes Example</title>
+        <link rel="stylesheet" href="..olapi/theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <style type="text/css">
+        	  .smallmap{
+        	  	width: 100%;
+        	  	height:500px;
+        	  }
+        	  #layertree{
+        	  	float: left;position:absolute;left:60px;width: 100px;height: 280px;z-index: 2001;
+        	  	opacity: 0.5;
+        	  	filter: alpha(opacity=50);/*IE*/
+        	  }
+        	  
+            #layertree div { 
+                float: left;
+                margin: 5px;
+                width: 100px;
+                height: 25px;
+                border: 1px solid gray;
+                display:block
+            }
+        	   div.angleItemInactive {
+                background-color: #aac;
+            }
+            div.angleItemActive {
+                background-color: #33c;
+            }
+            div.circleItemInactive {
+                background-color: #aac;
+            }
+            div.circleItemActive {
+                background-color: #33c;
+            }
+
+        </style>
+        <script src="../olapi/lib/OpenLayers.js"></script>
+        <script type="text/javascript">
+            var map,panel;
+            function init(){
+                map = new OpenLayers.Map('map');
+                var ol_wms = new OpenLayers.Layer.WMS( "OpenLayers WMS",
+                    "http://vmap0.tiles.osgeo.org/wms/vmap0?", {layers: 'basic'} );
+                map.addLayer(ol_wms);
+                map.addControl(new OpenLayers.Control.LayerSwitcher());
+                map.zoomToMaxExtent();
+                map.zoomTo(5);//默认设置到5级别
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        <h1 id="title">Boxes Example</h1>
+
+        <div id="tags">
+            box, annotation
+        </div>
+
+        <p id="shortdesc">
+            Demonstrate marker and box type annotations on a map.
+        </p>
+        
+        <div id="map" class="smallmap">
+        </div>
+        <div id="docs"></div>
+    </body>
+</html>

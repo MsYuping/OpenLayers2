@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="olapi/OpenLayers.debug.js"></script>
+		<script src="multiDraw.js"></script>
+		<style>
+			.olControlPanel {
+				top: 20px;
+				right: 20px;
+			}
+			
+			.olControlPanel div {
+				width: 25px;
+				height: 25px;
+				float: left;
+				margin: 5px 5px;
+				background-color: yellow;
+			}
+			
+			div.olControlDrawFeatureItemActive {
+				background-image: url(../olapi/theme/default/img/draw_point_on.png);
+			}
+			
+			div.olControlDrawFeatureItemInactive {
+				background-image: url(../olapi/theme/default/img/draw_point_off.png);
+			}
+		</style>
+	</head>
+
+	<body onload="init()">
+		<div id="rcp1_map" style="width: 100%;height: 400px;">
+		</div>
+		<ul>
+			<li>
+				draw:<input name="mode" type="radio" value="draw" checked onchange="toggleControl(this)" />
+				<select id="selHandler" onchange="changeHander(this.value)">
+					<option value="point">point</option>
+					<option value="line">Line</option>
+					<option value="poly">Poly</option>
+					<option value="camera">camera</option>
+				</select>
+			</li>
+			<li>
+				edit:<input name="mode" type="radio" value="modify" onchange="toggleControl(this)" />
+			</li>
+			<li>
+				select:<input name="mode" type="radio" value="select" onchange="toggleControl(this)" />
+			</li>
+		</ul>
+	</body>
+
+</html>
